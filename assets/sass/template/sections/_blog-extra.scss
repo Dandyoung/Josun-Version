@@ -1,0 +1,522 @@
+/* Blog Card ---------------------------------- */
+.blog-card {
+    background-color: $white-color;
+    position: relative;
+    z-index: 3;
+    border-radius: 30px;
+    border: 1px solid #E3E8F5;
+
+    &.style2 {
+        border-radius: 20px;
+
+        .box-title {
+            font-size: 20px;
+        }
+
+        .blog-content {
+            padding: 15px 30px 35px 30px;
+
+            @include xl {
+                padding: 20px;
+            }
+        }
+
+        .blog-tags {
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .blog-img {
+            border-radius: 20px 20px 0px 0px;
+
+            img {
+                border-radius: 20px 20px 0px 0px;
+            }
+        }
+
+        .box-title {
+            margin-bottom: 15px;
+        }
+    }
+
+    .blog-img {
+        position: relative;
+        border-radius: 30px 30px 0px 0px;
+        overflow: hidden;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            display: block;
+            content: '';
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(25deg);
+            z-index: 2;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 30px 30px 0px 0px;
+            transition: all 0.4s ease;
+        }
+    }
+
+    .blog-content {
+        padding: 15px 30px 30px 40px;
+
+        @include xl {
+            padding: 20px;
+        }
+    }
+
+    .blog-tags {
+        font-size: 12px;
+        font-weight: 700;
+        color: $theme-color;
+        letter-spacing: 0.48px;
+        text-transform: uppercase;
+        margin-top: -0.3rem;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #E1E5EB;
+    }
+
+    .box-title {
+        font-weight: 600;
+        letter-spacing: -0.24px;
+        margin-bottom: 5px;
+
+        a {
+            background-image: linear-gradient(to left, $theme-color, $theme-color);
+            background-repeat: no-repeat;
+            background-position: bottom left;
+            background-size: 0 2px;
+            transition: 0.5s ease-in-out;
+
+            &:hover {
+                background-size: 100% 2px;
+            }
+        }
+    }
+
+    &_text {
+        margin-bottom: 8px;
+    }
+
+    &_profile {
+        display: flex;
+        gap: 10px;
+    }
+
+    &_author {
+        min-width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    &_info {
+        a {
+            font-size: 12px;
+            color: $body-color;
+            font-weight: 400;
+        }
+    }
+
+    &_name {
+        font-family: $title-font;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.16px;
+        margin-bottom: -0.3rem;
+    }
+
+    &:hover {
+        .blog-img {
+            img {
+                transform: scale(1.08);
+            }
+
+            &:before {
+                animation: shine 1.9s;
+            }
+        }
+    }
+
+    .blog-btn {
+        border-bottom: 1px solid #E1E5EB;
+        margin-bottom: 25px;
+        padding-bottom: 30px;
+    }
+
+    .line-btn {
+        font-family: $body-font;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.16px;
+    }
+}
+
+
+@include md {
+    .blog-card {
+        .box-title {
+            font-size: 22px;
+        }
+    }
+}
+
+@include sm {
+    .blog-card {
+        .blog-content {
+            padding: 30px;
+        }
+
+        .box-title {
+            font-size: 24px;
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    .blog-card {
+        .box-title {
+            font-size: 22px;
+        }
+    }
+}
+
+@media (max-width: 350px) {
+    .blog-card {
+        .blog-content {
+            padding: 18px;
+        }
+
+        .box-title {
+            font-size: 20px;
+        }
+    }
+}
+
+/* Blog Box ---------------------------------- */
+.blog-box {
+    position: relative;
+    background-color: $white-color;
+    border-radius: 25px;
+    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.04); 
+
+    &.style2 {
+        border-radius: 30px;
+        background: #1E2127;
+        box-shadow: 0px 16px 38px 0px rgba(18, 20, 26, 0.54);  
+
+        .blog-tag {
+            border-radius: 15px;
+            padding: 4.5px 20.5px;
+            font-family: $body-font;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid #373A3F;
+            color: $white-color;
+            background: #262930;
+            display: inline-flex;
+            margin-bottom: 28px; 
+        } 
+
+        .box-title {
+            color: $white-color;
+            margin-bottom: 14px;
+
+        }
+
+        .blog-text {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+            padding-bottom: 22px; 
+            margin-bottom: 22px;
+        }
+
+        .blog-meta {
+            margin-bottom: 0;
+
+            span,
+            a {
+                font-size: 16px;
+                color: $white-color;
+                font-weight: 500;
+            }
+
+            span {
+                margin-right: 15px;
+                padding-right: 15px;
+                border-right: 1px solid rgba(255, 255, 255, 0.10);
+                height: 20px;
+                line-height: 20px;
+
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0px;
+                    border-right: none;
+                }
+            }
+
+            .author {
+                color: $theme-color;
+            }
+        }
+    }
+
+    &_content {
+        padding: 40px;
+
+        @include md {
+            padding: 30px;
+        }
+    }
+
+    .blog-img {
+        position: relative;
+        overflow: hidden;
+        border-radius: 25px 25px 0px 0px;
+        transition: all 0.4s ease;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            display: block;
+            content: '';
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(25deg);
+            z-index: 2;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 25px 25px 0px 0px;
+            transition: all 0.4s ease;
+        }
+    }
+
+    &_wrapper {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &_date {
+        background-color: $theme-color;
+        width: 50px;
+        height: 50px;
+        padding: 8px;
+        display: block;
+        margin: 0 auto;
+        font-family: var(--title-font);
+        color: var(--white-color);
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 0;
+    }
+
+    &_month {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: $body-font;
+        display: block;
+        margin-top: -0.3rem;
+    }
+
+    &_year {
+        position: relative;
+        border: 2px solid $theme-color;
+        font-family: $body-font;
+        color: $white-color;
+        font-weight: 400;
+        font-size: 14px;
+        display: block;
+
+        &:after {
+            content: '\f0d7';
+            font-family: var(--icon-font);
+            font-weight: 600;
+            font-size: 20px;
+            pointer-events: none;
+            position: absolute;
+            left: 15px;
+            color: $theme-color;
+            line-height: calc(var(--input-height) - 2px);
+            top: 3px;
+        }
+    }
+
+    .box-title {
+        letter-spacing: -0.48px;
+
+        @include md {
+            font-size: 22px;
+        }
+    }
+
+    .blog-meta {
+        margin: -0.3rem 0 15px 0;
+
+        span,
+        a {
+            @include vxs {
+                font-size: 14px;
+            }
+        }
+    }
+
+    &:hover {
+        .blog-img {
+            img {
+                transform: scale(1.08);
+            }
+
+            &:before {
+                animation: shine 1.9s;
+            }
+        }
+    }
+}
+
+/* Blog Grid ---------------------------------- */
+.blog-grid {
+    background-color: $white-color;
+    border-radius: 20px;
+
+    &.style2 {
+        background-color: $white-color;
+        display: flex;
+
+        @include sm {
+            display: block;
+        }
+
+        .blog-content {
+            padding: 47px 40px 51px 40px;
+
+            @include vxs {
+                padding: 30px;
+            }
+        }
+
+        .blog-img {
+            min-width: 312px;
+            border-radius: 20px 0px 0px 20px;
+
+
+            @include sm {
+                min-width: 100%;
+                border-radius: 20px 20px 0px 0px;
+
+            }
+        }
+    }
+
+    .blog-img {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px 20px 0px 0px;
+    }
+
+    .blog-content {
+        padding: 47px 40px 40px 40px;
+
+        @include vxs {
+            padding: 30px;
+        }
+    }
+
+    .blog-meta {
+        margin: -0.3rem 0 20px 0;
+    }
+
+    .blog-tag {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: $theme-color;
+        padding: 9px 20px;
+        color: $white-color;
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+
+    .box-title {
+        letter-spacing: -0.48px;
+        margin-bottom: 20px;
+
+        a {
+            background-image: linear-gradient(to left, $theme-color, $theme-color);
+            background-repeat: no-repeat;
+            background-position: bottom left;
+            background-size: 0 2px;
+            transition: 0.5s ease-in-out;
+
+            &:hover {
+                background-size: 100% 2px;
+            }
+        }
+    }
+
+    .line-btn:hover i {
+        transform: rotate(0deg);
+    }
+
+    .blog-img {
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            transition: 0.4s ease-in-out;
+        }
+    }
+
+    .blog-meta {
+        margin: -0.4em 0 18px 0;
+
+        span,
+        a {
+            @include vxs {
+                font-size: 14px;
+            }
+
+            >i {
+                color: $theme-color;
+                font-size: 14px;
+            }
+        }
+    }
+
+    &:hover {
+        .blog-img {
+            img {
+                transform: scale(1.08);
+            }
+        }
+    }
+}
+
+
+
+.blog-area {
+    padding-bottom: 60px;
+}

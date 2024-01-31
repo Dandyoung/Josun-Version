@@ -1,0 +1,228 @@
+/* Process Card ---------------------------------- */
+
+
+/* Process box ---------------------------------- */
+.process-box {
+    &-wrap {
+        position: relative;
+
+        @include sm {
+            text-align: center;
+        }
+
+        &:after {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg width='134' height='39' viewBox='0 0 134 39' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M133.173 23.6433C126.714 16.8033 121.62 9.19526 116.032 1.68518C114.578 -0.269696 111.926 1.90146 112.691 3.89867C113.99 7.27813 115.673 10.5234 117.598 13.6407C109.189 9.30428 99.5097 6.39589 90.8399 4.46574C79.2098 1.87793 66.9908 1.13385 55.1405 2.4149C35.4797 4.54034 10.1376 15.0254 1.05119 34.0014C0.531659 35.0839 2.10482 35.8979 2.90074 35.2304C10.9697 28.4653 17.8638 21.6479 27.5895 17.1222C37.116 12.6904 47.7889 9.98799 58.2851 9.37953C69.3777 8.73616 80.2784 10.5974 90.872 13.8112C99.7423 16.5003 107.736 20.6818 116.038 24.4129C109.748 26.0598 103.711 28.8136 99.1712 32.7679C96.504 35.0921 99.3845 39.336 102.558 37.8766C107.383 35.656 111.723 32.9156 116.869 31.3494C121.64 29.8948 126.453 29.3118 131.398 28.8538C133.788 28.6297 134.709 25.2719 133.173 23.6433Z' fill='%23CED9E8'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            height: 52px;
+            width: 140px;
+            position: absolute;
+            top: 40px;
+            right: 10px;
+
+            @include lg {
+                background-image: url("data:image/svg+xml,%3Csvg width='96' height='36' viewBox='0 0 134 39' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M133.173 23.6433C126.714 16.8033 121.62 9.19526 116.032 1.68518C114.578 -0.269696 111.926 1.90146 112.691 3.89867C113.99 7.27813 115.673 10.5234 117.598 13.6407C109.189 9.30428 99.5097 6.39589 90.8399 4.46574C79.2098 1.87793 66.9908 1.13385 55.1405 2.4149C35.4797 4.54034 10.1376 15.0254 1.05119 34.0014C0.531659 35.0839 2.10482 35.8979 2.90074 35.2304C10.9697 28.4653 17.8638 21.6479 27.5895 17.1222C37.116 12.6904 47.7889 9.98799 58.2851 9.37953C69.3777 8.73616 80.2784 10.5974 90.872 13.8112C99.7423 16.5003 107.736 20.6818 116.038 24.4129C109.748 26.0598 103.711 28.8136 99.1712 32.7679C96.504 35.0921 99.3845 39.336 102.558 37.8766C107.383 35.656 111.723 32.9156 116.869 31.3494C121.64 29.8948 126.453 29.3118 131.398 28.8538C133.788 28.6297 134.709 25.2719 133.173 23.6433Z' fill='%23CED9E8'/%3E%3C/svg%3E%0A");
+                width: 96px;
+                height: 36px;
+                right: 0px;
+            }
+
+            @include md {
+                right: 30px;
+            }
+        }
+
+        &:nth-child(even) {
+            @include md {
+                margin-bottom: 60px;
+            }
+        }
+
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    &_icon {
+        position: relative;
+        @include equal-size-lineHeight(144px);
+        background-color: $white-color;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0px 10px 31px 0px rgba(14, 89, 242, 0.05);
+        margin-bottom: 35px;
+        transition: 0.4s ease-in-out;
+
+        @include xl {
+            @include equal-size-lineHeight(120px);
+        }
+
+        @include sm {
+            margin: auto auto 25px auto;
+            display: block;
+        }
+
+        img {
+            transition: 0.4s ease-in-out;
+        }
+    }
+
+    &_title {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.48px;
+    }
+
+    &_text {
+        margin-bottom: -0.3rem; 
+    }
+
+    .box-number {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        color: $white-color;
+        text-align: center;
+        background-color: $theme-color;
+        border-radius: 50%;
+        transition: 0.4s ease-in-out;
+
+        @include sm {
+            top: -10px;
+        }
+    }
+
+    &:hover {
+        .process-box {
+            &_icon {
+                background-color: $theme-color;
+
+                img {
+                    filter: brightness(0) invert(1);
+                    transform: rotateY(180deg);
+                }
+            }
+
+        }
+
+        .box-number {
+            background-color: $white-color;
+            color: $theme-color;
+        }
+    }
+}
+
+@include md {
+    .process-box {
+        &-wrap {
+            &:nth-child(even) {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include sm {
+    .process-box {
+        &-wrap {
+            &:after {
+                display: none;
+            }
+
+            margin-bottom: 40px;
+
+            &:nth-child(even) {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.process-title-area {
+    max-width: 490px;
+    display: block;
+    margin: auto;
+}
+
+.process-card {
+    position: relative;
+    padding: 50px 30px;
+    border-radius: 15px;
+    border: 1px solid #E3E7F0;
+    background: #FBFCFF;
+    text-align: center;
+    transition: 0.4s ease-in-out;
+
+    @include xl {
+        padding: 40px 20px;  
+    }
+
+    &_icon {
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        text-align: center;
+        border: 1px solid #E3E7F0;
+        background-color: $white-color;
+        display: block;
+        margin: auto auto 30px auto;
+        border-radius: 50%;
+        z-index: 9;
+        transition: 0.4s ease-in-out; 
+        @include sm {
+            width: 90px;
+            height: 90px; 
+            line-height: 90px;
+        }
+
+        img {
+            transition: 0.4s ease-in-out;
+        }
+    }
+
+    &_text {
+        margin-bottom: 18px;  
+    }
+
+    .box-title {
+        margin: 30px 0 10px 0;
+    }
+    .line-btn{
+        font-family: $body-font;
+    }
+
+
+
+    &:hover {
+        .process-card {
+            &_img {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+
+            &_icon {
+                border: 1px solid $theme-color;
+
+                &:before {
+                    transform: scaleX(1.0);
+                }
+
+                img {
+                    transform: rotateY(180deg);
+                }
+            }
+        }
+    }
+}
