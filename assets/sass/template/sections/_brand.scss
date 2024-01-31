@@ -1,0 +1,155 @@
+/* Brand 1 ---------------------------------- */
+.brand-box {
+    border-radius: 20px;
+    border: 1px solid #EDF0F4;
+    background: linear-gradient(180deg, #EDF0F4 0%, rgba(237, 240, 244, 0.00) 100%);
+    display: grid;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 90px;
+    // filter: grayscale(1) invert(0.3) brightness(1.4);
+    transition: 0.4s ease-in-out;
+
+    img {
+        transition: all 0.4s ease-in-out;
+    }
+
+    &:hover {
+        filter: none;
+
+        img {
+            transform: scale(1.2);
+        }
+    }
+}
+
+brand-title {
+    letter-spacing: -0.4px; 
+    font-weight: 600;
+}
+
+/* Brand 2 ---------------------------------- */
+.brand-slider {
+    border-top: 1px solid #E9EAEC;
+    padding-top: 65px;
+    margin-top: 120px;
+    @include md {
+        margin-top: 80px; 
+    }
+}
+
+.brand-card {
+    height: 38px;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    display: block;
+
+    &:hover {
+        a img {
+            &.gray {
+
+                opacity: 1;
+                visibility: visible;
+                transition: all 0.7s ease-in-out;
+                transform: translateY(0%);
+
+            }
+
+            &.original {
+
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.7s ease-in-out;
+                transform: translateY(-100%);
+            }
+        }
+    }
+
+    img {
+        margin: 0 auto;
+        transition: all 0.7s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        &.gray {
+
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.7s ease-in-out;
+            transform: translateY(-100%);
+
+
+        }
+
+        &.original {
+
+            transition: all 0.7s ease-in-out;
+            transform: translateY(0%);
+        }
+    }
+}
+
+
+
+
+.brand-item {
+    border-radius: 20px;
+    border: 1px solid #EDF0F4;
+    background: linear-gradient(180deg, #EDF0F4 0%, rgba(237, 240, 244, 0.00) 100%);
+    display: grid;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 90px;
+    transition: 0.4s ease-in-out; 
+
+    a {
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+
+        .original {
+            transition: all 0.3s ease-in-out;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            // filter: grayscale(100%); 
+        }
+
+        .gray {
+            // filter: grayscale(100%);
+            transition: all 0.3s ease-in-out;
+            display: block;
+        }
+
+        &:hover {
+            .original {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                display: block;
+                opacity: 3;
+                visibility: visible;
+                transform: translateY(0%);
+                // filter: grayscale(0%);
+            }
+
+            .gray {
+                display: block;
+                visibility: hidden;
+                transform: translateY(100%);
+                // filter: grayscale(100%);
+            }
+        }
+    }
+}

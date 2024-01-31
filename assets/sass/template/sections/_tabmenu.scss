@@ -1,0 +1,288 @@
+/* Tab Menu 1 ------------------------------------*/
+.appointment-tabs {
+    margin-bottom: 120px;
+
+    @include md {
+        margin-bottom: 80px;
+    }
+
+    &.nav-tabs {
+        border-bottom: none;
+        gap: 15px;
+
+        .nav-item.show .nav-link,
+        .nav-link.active {
+            color: var(--white-color);
+            background-color: var(--theme-color);
+            border-color: transparent;
+        }
+    }
+
+    .nav-link {
+        border-radius: 100px;
+        background: $white-color;
+        padding: 5px 40px 5px 5px;
+        font-size: 18px;
+        font-family: $title-font;
+        font-weight: 600;
+        letter-spacing: -0.36px;
+        color: $title-color;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        box-shadow: 0px 15px 46px 0px rgba(232, 234, 238, 0.80);
+
+        @include sm {
+            font-size: 16px;
+        }
+
+        img {
+            width: 55px;
+            height: 55px;
+            line-height: 55px;
+            padding: 10px;
+            border-radius: 50%;
+            background: #F3F5FC;
+            object-fit: cover;
+        }
+    }
+
+}
+
+.process-tabs {
+    margin-bottom: 20px;
+
+    &.nav-tabs {
+        border-bottom: none;
+        gap: 24px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        @include lg {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media(max-width: 480px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .nav-item.show .nav-link,
+        .nav-link.active {
+            color: $title-color;
+            background-color: #FBFCFF;
+            border-color: $theme-color;
+
+            .step-title {
+                color: $theme-color;
+                font-family: $body-font;
+            }
+        }
+    }
+
+    .process-icon {
+        position: absolute;
+        top: 15%;
+        right: -22%;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        color: $theme-color;
+        border-radius: 50%;
+        background-color: #FBFCFF;
+        border: 1px solid #E3E7F0;
+        transform: translate(-50%, 50%);
+        z-index: 2;
+
+        @include xl {
+            right: -25%;
+        }
+
+        @include lg {
+            right: -15%;
+        }
+
+        @include md {
+            right: -21%;
+        }
+
+        @include sm {
+            right: -20%;
+        }
+
+        @media(max-width: 480px) {
+            right: 30%;
+            top: unset;
+            bottom: -25px;
+        }
+
+
+        i {
+            color: $theme-color;
+        }
+    }
+
+    .nav-link {
+        position: relative;
+        border-radius: 15px;
+        border: 1px solid #E3E7F0;
+        background: #FBFCFF;
+        padding: 50px 60px;
+        font-size: 22px;
+        min-width: 325px;
+        font-family: $title-font;
+        font-weight: 600;
+        letter-spacing: -0.22px;
+        color: $title-color;
+        display: block;
+        box-shadow: none;
+        text-align: center;
+        margin-bottom: -0.3rem;
+
+        @media(max-width: 1399px) {
+            min-width: 310px;
+        }
+
+        @include xl {
+            min-width: 260px;
+            padding: 50px 40px; 
+        }
+
+        @include sm {
+            min-width: 240px; 
+            font-size: 18px; 
+        }
+
+        @media(max-width: 550px) {  
+            min-width: 100%;
+        }
+
+        .step-title {
+            font-size: 14px;
+            color: $body-color;
+            font-weight: 600;
+            display: block;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+    }
+
+}
+
+.process-wrapper {
+    .tab-content {
+
+        >.active { 
+            &.tab-pane { 
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+                @include lg {
+                    grid-template-columns: repeat(2, 1fr); 
+                }
+                @media(max-width: 550px) {
+                    grid-template-columns: repeat(1, 1fr);  
+                 }
+            }
+
+            .process-card {
+                &:first-child {
+                    background-color: #FBFCFF;
+                    border-color: $theme-color;
+                }
+                
+            }
+        }
+    }
+}
+
+.choose-tabs-wrapper {
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: #1E2127;
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0px 16px 48px 0px rgba(18, 20, 26, 0.64);
+
+    @include lg {
+        gap: 30px;
+    }
+
+    @include md {
+        display: block;
+
+    }
+}
+
+.choose-tabs-tabs {
+    &.nav-tabs {
+        border-bottom: none;
+        padding: 60px;
+        display: block;
+
+        @include lg {
+            padding: 60px 40px;
+        }
+
+        @include md {
+            padding: 60px 40px 40px 40px;
+            margin-bottom: 0;
+        }
+
+        @include vxs {
+            max-width: 100%;
+            padding: 60px 20px 20px 20px;
+        }
+
+        .nav-link:focus,
+        .nav-link:hover {
+            color: $white-color;
+            background-color: $theme-color;
+            border-color: $theme-color;
+        }
+
+        .nav-item.show .nav-link,
+        .nav-link.active {
+            color: $white-color;
+            background-color: $theme-color;
+            border-color: $theme-color;
+        }
+    }
+
+    .nav-link {
+        position: relative;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: #1D2128;
+        padding: 18px 40px;
+        font-family: $title-font;
+        font-size: 20px;
+        line-height: 20px;
+        font-weight: 600;
+        min-width: 330px;
+        color: $white-color;
+        text-align: left;
+        display: block;
+        box-shadow: none;
+
+        @include md {
+            min-width: 100%;
+        }
+
+        @include xs {
+            padding: 14px 20px;
+        }
+
+        @include vxs {
+            font-size: 16px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+
+    @include md {
+        margin-bottom: 30px;
+    }
+}
