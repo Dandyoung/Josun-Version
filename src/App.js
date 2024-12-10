@@ -9,6 +9,10 @@ import About from './components/sections/About';
 import Music from './components/sections/Music';
 import Band from './components/sections/Band';
 import Footer from './components/layout/Footer';
+import './styles/globalstyles.css';
+import MusicPlayer from './components/common/MusicPlayer';
+
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -45,6 +49,7 @@ function App() {
         <Band /> 
       </main>
       <Footer />
+      <MusicPlayer />
     </AppWrapper>
   );
 }

@@ -1,0 +1,30 @@
+/* 기존 fonts.css의 내용을 여기로 가져옵니다 */
+@font-face {
+    font-family: 'YeojuCeramic';
+    src: url('../fonts/YeojuCeramic_TTF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* 전역 스타일 설정 */
+  :root {
+    --color-primary: #464646;
+    --color-secondary: #F3E7B7;
+    --color-background: #FFFFFF;
+  }
+  
+  /* 모든 요소에 기본 폰트 설정 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'YeojuCeramic', sans-serif;
+  }
+  
+  /* 헤딩 태그들에 대한 폰트 설정 */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'YeojuCeramic', sans-serif;
+  }

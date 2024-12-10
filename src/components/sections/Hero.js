@@ -16,7 +16,7 @@ const Hero = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 7000,
+    autoplaySpeed: 20000,
     fade: isAutoplay,             // autoplay일 때만 페이드 효과 사용
     pauseOnHover: false,
     cssEase: "linear",
@@ -40,9 +40,10 @@ const Hero = () => {
     <HeroSection className="hero">
       <MainSlider ref={sliderRef} {...settings}>
         <SlideItem>
-          <BackgroundImg className="overlay zoom">
-            <img src="/img/JOSUN1.jpg" alt="조선버전" />
-          </BackgroundImg>
+        <BackgroundImg className="overlay zoom">
+          <img className="main-image" src="/img/JOSUN_2.jpg" alt="조선버전" />
+          <img className="secondary-image" src="/img/JOSUN_3.jpg" alt="조선버전 배경" />
+        </BackgroundImg>
           <Container>
             <Row>
               <Col>
@@ -109,12 +110,16 @@ const SlideItem = styled.div`
   height: 100vh;
 `;
 
+
+
 const BackgroundImg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
+  z-index: 1;  // 낮은 z-index 추가
+  
   
   &.overlay::before {
     content: '';
@@ -126,19 +131,34 @@ const BackgroundImg = styled.div`
     background: rgba(0, 0, 0, 0.5);
   }
 
-  &.zoom img {
-    animation: zoomEffect 20s linear infinite;
+  img {
+    width: 120%;
+    height: 120%;
+    object-fit: contain;
+    object-position: center center;
+    position: relative;
+    margin: 0 auto;
+    display: block;
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .secondary-image {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 10%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    z-index: 2;    // 메인 이미지보다 위에, 로고보다 아래에 투명도 조절은 opacity
+  }
+
+  &.zoom img {
+    animation: zoomEffect 20s linear infinite;
+    transform-origin: center center;
   }
 
   @keyframes zoomEffect {
     from {
-      transform: scale(1);
+      transform: scale(0.85);
     }
     to {
       transform: scale(1.1);
@@ -168,9 +188,10 @@ const Col = styled.div`
 const InnerHero = styled.div`
   position: relative;
   padding: 40px;
-  z-index: 1;
+  z-index: 10;  // z-index를 더 높게 설정
 `;
 
+// 테두리 색 변경
 const BackRect = styled.div`
   position: absolute;
   top: 0;
@@ -178,17 +199,17 @@ const BackRect = styled.div`
   transform: translateX(-50%);
   width: 80%;
   height: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);  // 검은색 20% 투명도
 `;
 
 const FrontRect = styled(BackRect)`
   transform: translateX(-50%) scale(0.95);
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(0, 0, 0, 0.4);  // 검은색 40% 투명도
 `;
 
 const Title = styled.h1`
   font-size: 5rem;
-  color: white;
+  color: Black;
   margin: 0;
   text-transform: uppercase;
   
@@ -199,7 +220,7 @@ const Title = styled.h1`
 
 const SubTitle = styled.h5`
   font-size: 1.5rem;
-  color: white;
+  color: Black;
   margin: 20px 0 0;
   text-transform: uppercase;
   letter-spacing: 2px;
