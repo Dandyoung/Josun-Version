@@ -12,7 +12,7 @@ josun_version/
 ├── reference/
 │   ├── mousiqua-music-band-and-musician-template/
 │   └── www.mangoboost.io/
-└── src/
+└── src/ 와,, 여기가 리액트 부분..
     ├── assets/
     ├── components/
     │   ├── common/
