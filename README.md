@@ -1,3 +1,26 @@
+## 디렉토리 폴더구조
+
+josun_version/
+├── assets/
+│   ├── css/
+│   ├── fonts/
+│   ├── img/
+│   ├── js/
+│   └── sass/
+├── public/
+│   └── img/
+├── reference/
+│   ├── mousiqua-music-band-and-musician-template/
+│   └── www.mangoboost.io/
+└── src/
+    ├── assets/
+    ├── components/
+    │   ├── common/
+    │   ├── layout/
+    │   └── sections/
+    ├── fonts/
+    └── styles/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
