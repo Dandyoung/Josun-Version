@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# Reference folder
+reference/
+/reference
+/workspace/my_git_repo/josun_version/reference/
+
 # testing
 /coverage
 
