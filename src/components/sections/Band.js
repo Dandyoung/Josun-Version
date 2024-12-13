@@ -1,95 +1,86 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const Band = () => {
-  const [currentIndex, setCurrentIndex] = useState(2);
-
+  const [selectedMember, setSelectedMember] = useState(null);
+    
   const members = [
     {
       id: 1,
       name: "Kim Young-ho",
       role: "Leader & Promoter",
+      position: "EXECUTIVE",
       image: "/img/KYH.jpg",
+      imagePosition: "center 10%",
+      imageScale: "1",
       social: {
-        instagram: "https://instagram.com/",
-        youtube: "https://youtube.com/"
+        instagram: "https://instagram.com/"
       }
     },
     {
       id: 2,
       name: "Kim Chae-rin",
       role: "Geomungo",
+      position: "MUSICIAN",
       image: "/img/KCL.jpg",
+      imagePosition: "center 30%",
+      imageScale: "1",
       social: {
-        instagram: "https://instagram.com/",
-        youtube: "https://youtube.com/"
+        instagram: "https://instagram.com/"
       }
     },
     {
       id: 3,
       name: "Lee So-yeong",
       role: "Daegeum",
+      position: "MUSICIAN",
       image: "/img/LSY.jpg",
+      imagePosition: "center 20%",
+      imageScale: "1",
       social: {
-        instagram: "https://instagram.com/",
-        youtube: "https://youtube.com/"
+        instagram: "https://instagram.com/"
       }
     },
     {
       id: 4,
       name: "Hwang Yoo-kyung",
       role: "Haegeum",
+      position: "MUSICIAN",
       image: "/img/HYK.png",
+      imagePosition: "center 10%",
+      imageScale: "1",
       social: {
-        instagram: "https://instagram.com/",
-        youtube: "https://youtube.com/"
+        instagram: "https://instagram.com/"
       }
     },
     {
       id: 5,
       name: "Byeon Jae-byeok",
       role: "Synthesizer",
+      position: "MUSICIAN",
       subRole: "Composer & Arranger",
       image: "/img/BJB.jpg",
+      imagePosition: "center 10%",
+      imageScale: "1",
       social: {
-        instagram: "https://instagram.com/",
-        youtube: "https://youtube.com/"
+        instagram: "https://instagram.com/"
       }
     },
     {
       id: 6,
       name: "Jeon Jung-hyun",
       role: "Percussion",
+      position: "MUSICIAN",
       image: "/img/JJH.jpg",
+      imagePosition: "center 5%",
+      imageScale: "1",
       social: {
-        instagram: "https://instagram.com/",
-        youtube: "https://youtube.com/"
+        instagram: "https://instagram.com/"
       }
     }
   ];
-
-  const getAdjacentIndexes = (index) => {
-    const prevIndex = index === 0 ? members.length - 1 : index - 1;
-    const nextIndex = index === members.length - 1 ? 0 : index + 1;
-    return [prevIndex, index, nextIndex];
-  };
-
-  const handleCardClick = (clickedIndex) => {
-    // 현재 인덱스가 아닐 때만 작동
-    if (clickedIndex !== currentIndex) {
-      // 오른쪽 카드를 클릭했을 때
-      if (clickedIndex === (currentIndex === members.length - 1 ? 0 : currentIndex + 1)) {
-        setCurrentIndex(currentIndex === members.length - 1 ? 0 : currentIndex + 1);
-      }
-      // 왼쪽 카드를 클릭했을 때
-      else if (clickedIndex === (currentIndex === 0 ? members.length - 1 : currentIndex - 1)) {
-        setCurrentIndex(currentIndex === 0 ? members.length - 1 : currentIndex - 1);
-      }
-    }
-  };
 
   return (
     <BandSection id="band">
@@ -98,75 +89,53 @@ const Band = () => {
           <h1 className="korean-font">TEAM MEMBERS</h1>
         </SectionTitle>
 
-        <CarouselContainer>
-          <ArrowButton left onClick={() => {
-            setCurrentIndex(currentIndex === 0 ? members.length - 1 : currentIndex - 1);
-          }}>
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </ArrowButton>
-
-          <CarouselTrack>
-            {getAdjacentIndexes(currentIndex).map((index, i) => {
-              const member = members[index];
-              const isActive = i === 1; // 중앙 카드
-              
-              return (
-                <MemberCard 
-                  key={`${member.id}-${index}`}
-                  isActive={isActive}
-                  onClick={() => handleCardClick(index)}
-                  style={{
-                    transform: `
-                      translateX(${(i - 1) * 80}%) 
-                      translateZ(${isActive ? 0 : -150}px)
-                      scale(${isActive ? 1 : 0.8})
-                    `,
-                    opacity: 1 - (Math.abs(i - 1) * 0.2),
-                    zIndex: 3 - Math.abs(i - 1)
-                  }}
-                >
-                  <MemberImage>
-                    <img src={member.image} alt={member.name} />
-                    {isActive && (
-                      <Overlay>
-                        <SocialLinks>
-                          <SocialLink href={member.social.instagram} target="_blank">
-                            <FontAwesomeIcon icon={faInstagram} />
-                          </SocialLink>
-                          <SocialLink href={member.social.youtube} target="_blank">
-                            <FontAwesomeIcon icon={faYoutube} />
-                          </SocialLink>
-                        </SocialLinks>
-                      </Overlay>
-                    )}
-                  </MemberImage>
-                  <MemberInfo>
-                    <h3>{member.name}</h3>
-                    <p>{member.role}</p>
-                    {member.subRole && <p>{member.subRole}</p>}
-                  </MemberInfo>
-                </MemberCard>
-              );
-            })}
-          </CarouselTrack>
-
-          <ArrowButton right onClick={() => {
-            setCurrentIndex(currentIndex === members.length - 1 ? 0 : currentIndex + 1);
-          }}>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </ArrowButton>
-        </CarouselContainer>
-
-        <DotsContainer>
-          {members.map((_, index) => (
-            <Dot 
-              key={index} 
-              isActive={currentIndex === index}
-              onClick={() => setCurrentIndex(index)}
-            />
+        <MembersGrid>
+          {members.map(member => (
+            <MemberCard key={member.id}>
+              <MemberImage>
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  style={{ 
+                    objectPosition: member.imagePosition,
+                    transform: `scale(${member.imageScale})`
+                  }} 
+                />
+              </MemberImage>
+              <TagContainer>
+  <PositionTag onClick={() => setSelectedMember(member)}>
+    <span className="default">{member.position}</span>
+    <span className="hover">Read bio →</span>
+  </PositionTag>
+  <SocialLink href={member.social.instagram} target="_blank">
+    <FontAwesomeIcon icon={faInstagram} />
+  </SocialLink>
+</TagContainer>
+              <MemberInfo>
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+                {member.subRole && <p>{member.subRole}</p>}
+              </MemberInfo>
+            </MemberCard>
           ))}
-        </DotsContainer>
+        </MembersGrid>
       </Container>
+
+      {selectedMember && (
+        <Modal onClick={() => setSelectedMember(null)}>
+          <ModalContent onClick={e => e.stopPropagation()}>
+            <CloseButton onClick={() => setSelectedMember(null)}>×</CloseButton>
+            <ModalImage>
+              <img src={selectedMember.image} alt={selectedMember.name} />
+            </ModalImage>``
+            <ModalInfo>
+              <h2>{selectedMember.name}</h2>
+              <p>{selectedMember.role}</p>
+              {selectedMember.subRole && <p>{selectedMember.subRole}</p>}
+            </ModalInfo>
+          </ModalContent>
+        </Modal>
+      )}
     </BandSection>
   );
 };
@@ -200,158 +169,207 @@ const SectionTitle = styled.div`
       font-family: 'YeojuCeramic', sans-serif;
     }
   }
-`;
 
-const CarouselContainer = styled.div`
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-  overflow: hidden;
-  perspective: 1000px;
-`;
-
-const CarouselTrack = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 600px;
-  padding: 40px 0;
-  transform-style: preserve-3d;
-`;
-
-const ArrowButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  ${props => props.left ? 'left: 20px;' : 'right: 20px;'}
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
-  &:hover {
-    background: white;
-    transform: translateY(-50%) scale(1.1);
+  h5 {
+    font-size: 1.2rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
+`;
 
-  svg {
-    font-size: 20px;
-    color: #333;
+const MembersGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 0 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 350px;
   }
 `;
 
 const MemberCard = styled.div`
-  position: absolute;
   background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: all 0.5s ease;
-  width: 350px;
-  cursor: pointer;
-
-  ${props => props.isActive && `
-    &:hover {
-      transform: translateY(-10px) !important;
-    }
-  `}
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
 `;
 
 const MemberImage = styled.div`
-  position: relative;
-  aspect-ratio: 3/4;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 20px;
   overflow: hidden;
+  margin-bottom: 20px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.1);
+    border-radius: 20px;
+    transition: transform 0.3s ease;
   }
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+const TagContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.3s ease;
-
-  ${MemberCard}:hover & {
-    opacity: 1;
-  }
+  padding: 0 20px;
+  margin-bottom: 16px;
 `;
 
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 20px;
+const PositionTag = styled.div`
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid #000;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  .default, .hover {
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    transform: translateY(100%);
+    color: #FF6B6B;
+  }
+
+  &:hover {
+    .default {
+      transform: translateY(-100%);
+    }
+    .hover {
+      transform: translateY(0);
+    }
+  }
 `;
 
 const SocialLink = styled.a`
-  color: white;
-  font-size: 1.8rem;
+  color: #E1306C;
+  font-size: 1.5rem;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     transform: scale(1.2);
-    color: #ffd700;
+    opacity: 0.8;
   }
 `;
 
 const MemberInfo = styled.div`
-  padding: 20px;
-  text-align: center;
+  text-align: left;
+  padding: 0 20px;
 
   h3 {
-    margin: 0 0 10px;
-    font-size: 1.5rem;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
     font-family: 'YeojuCeramic', sans-serif;
   }
 
   p {
-    margin: 0;
+    font-size: 18px;
     color: #666;
-    font-size: 1.1rem;
+    margin: 0;
   }
 `;
 
-const DotsContainer = styled.div`
+const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: center;
+  z-index: 1000;
 `;
 
-const Dot = styled.button`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background-color: ${props => props.isActive ? '#ffd700' : '#ccc'};
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+const ModalContent = styled.div`
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  gap: 30px;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ModalImage = styled.div`
+  flex: 1;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+`;
+
+const ModalInfo = styled.div`
+  flex: 1;
+  h2 {
+    margin: 0 0 15px;
+    font-size: 2rem;
+    font-family: 'YeojuCeramic', sans-serif;
+  }
+  p {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: #666;
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  
   &:hover {
-    background-color: #ffd700;
+    color: #FF6B6B;
   }
 `;
 
