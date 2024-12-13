@@ -1,10 +1,12 @@
-// src/components/sections/Band.js
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const Band = () => {
+  const [currentIndex, setCurrentIndex] = useState(2);
+
   const members = [
     {
       id: 1,
@@ -69,36 +71,101 @@ const Band = () => {
     }
   ];
 
+  const getAdjacentIndexes = (index) => {
+    const prevIndex = index === 0 ? members.length - 1 : index - 1;
+    const nextIndex = index === members.length - 1 ? 0 : index + 1;
+    return [prevIndex, index, nextIndex];
+  };
+
+  const handleCardClick = (clickedIndex) => {
+    // 현재 인덱스가 아닐 때만 작동
+    if (clickedIndex !== currentIndex) {
+      // 오른쪽 카드를 클릭했을 때
+      if (clickedIndex === (currentIndex === members.length - 1 ? 0 : currentIndex + 1)) {
+        setCurrentIndex(currentIndex === members.length - 1 ? 0 : currentIndex + 1);
+      }
+      // 왼쪽 카드를 클릭했을 때
+      else if (clickedIndex === (currentIndex === 0 ? members.length - 1 : currentIndex - 1)) {
+        setCurrentIndex(currentIndex === 0 ? members.length - 1 : currentIndex - 1);
+      }
+    }
+  };
+
   return (
     <BandSection id="band">
       <Container>
         <SectionTitle>
-          <h1 className="korean-font">TEAM MEMBERES</h1>
+          <h1 className="korean-font">TEAM MEMBERS</h1>
         </SectionTitle>
 
-        <MembersGrid>
-          {members.map(member => (
-            <MemberCard key={member.id}>
-              <MemberImage>
-                <img src={member.image} alt={member.name} />
-                <Overlay>
-                  <SocialLinks>
-                    <SocialLink href={member.social.instagram} target="_blank">
-                      <FontAwesomeIcon icon={faInstagram} />
-                    </SocialLink>
-                    <SocialLink href={member.social.youtube} target="_blank">
-                      <FontAwesomeIcon icon={faYoutube} />
-                    </SocialLink>
-                  </SocialLinks>
-                </Overlay>
-              </MemberImage>
-              <MemberInfo>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </MemberInfo>
-            </MemberCard>
+        <CarouselContainer>
+          <ArrowButton left onClick={() => {
+            setCurrentIndex(currentIndex === 0 ? members.length - 1 : currentIndex - 1);
+          }}>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </ArrowButton>
+
+          <CarouselTrack>
+            {getAdjacentIndexes(currentIndex).map((index, i) => {
+              const member = members[index];
+              const isActive = i === 1; // 중앙 카드
+              
+              return (
+                <MemberCard 
+                  key={`${member.id}-${index}`}
+                  isActive={isActive}
+                  onClick={() => handleCardClick(index)}
+                  style={{
+                    transform: `
+                      translateX(${(i - 1) * 80}%) 
+                      translateZ(${isActive ? 0 : -150}px)
+                      scale(${isActive ? 1 : 0.8})
+                    `,
+                    opacity: 1 - (Math.abs(i - 1) * 0.2),
+                    zIndex: 3 - Math.abs(i - 1)
+                  }}
+                >
+                  <MemberImage>
+                    <img src={member.image} alt={member.name} />
+                    {isActive && (
+                      <Overlay>
+                        <SocialLinks>
+                          <SocialLink href={member.social.instagram} target="_blank">
+                            <FontAwesomeIcon icon={faInstagram} />
+                          </SocialLink>
+                          <SocialLink href={member.social.youtube} target="_blank">
+                            <FontAwesomeIcon icon={faYoutube} />
+                          </SocialLink>
+                        </SocialLinks>
+                      </Overlay>
+                    )}
+                  </MemberImage>
+                  <MemberInfo>
+                    <h3>{member.name}</h3>
+                    <p>{member.role}</p>
+                    {member.subRole && <p>{member.subRole}</p>}
+                  </MemberInfo>
+                </MemberCard>
+              );
+            })}
+          </CarouselTrack>
+
+          <ArrowButton right onClick={() => {
+            setCurrentIndex(currentIndex === members.length - 1 ? 0 : currentIndex + 1);
+          }}>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </ArrowButton>
+        </CarouselContainer>
+
+        <DotsContainer>
+          {members.map((_, index) => (
+            <Dot 
+              key={index} 
+              isActive={currentIndex === index}
+              onClick={() => setCurrentIndex(index)}
+            />
           ))}
-        </MembersGrid>
+        </DotsContainer>
       </Container>
     </BandSection>
   );
@@ -133,42 +200,70 @@ const SectionTitle = styled.div`
       font-family: 'YeojuCeramic', sans-serif;
     }
   }
-
-  h5 {
-    font-size: 1.2rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
 `;
 
-const MembersGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  padding: 0 15px;
-  
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
+const CarouselContainer = styled.div`
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  overflow: hidden;
+  perspective: 1000px;
+`;
+
+const CarouselTrack = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  padding: 40px 0;
+  transform-style: preserve-3d;
+`;
+
+const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  ${props => props.left ? 'left: 20px;' : 'right: 20px;'}
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  &:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
   }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(1, 1fr);
+
+  svg {
+    font-size: 20px;
+    color: #333;
   }
 `;
 
 const MemberCard = styled.div`
+  position: absolute;
   background: white;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  animation: ${fadeIn} 1s ease;
+  transition: all 0.5s ease;
+  width: 350px;
+  cursor: pointer;
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  }
+  ${props => props.isActive && `
+    &:hover {
+      transform: translateY(-10px) !important;
+    }
+  `}
 `;
 
 const MemberImage = styled.div`
@@ -183,7 +278,7 @@ const MemberImage = styled.div`
     transition: transform 0.5s ease;
   }
 
-  ${MemberCard}:hover img {
+  &:hover img {
     transform: scale(1.1);
   }
 `;
@@ -236,6 +331,27 @@ const MemberInfo = styled.div`
     margin: 0;
     color: #666;
     font-size: 1.1rem;
+  }
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+`;
+
+const Dot = styled.button`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: ${props => props.isActive ? '#ffd700' : '#ccc'};
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ffd700;
   }
 `;
 
