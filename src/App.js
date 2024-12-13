@@ -43,10 +43,10 @@ function App() {
       {showModal && <WelcomeModal onClose={handleCloseModal} />}
       <Header />
       <main>
-        <Hero />
+        {/* <Hero /> */}
         <About />
-        <Music />
         <Band /> 
+        <Music />
       </main>
       <Footer />
       <MusicPlayer />
