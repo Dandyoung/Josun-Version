@@ -16,7 +16,7 @@ const Band = () => {
       imagePosition: "center 10%",
       imageScale: "1",
       social: {
-        instagram: "https://instagram.com/"
+        instagram: "https://www.instagram.com/yong_houuu/?igsh=d2RydTFudDIzem45"
       }
     },
     {
@@ -28,7 +28,7 @@ const Band = () => {
       imagePosition: "center 30%",
       imageScale: "1",
       social: {
-        instagram: "https://instagram.com/"
+        instagram: "https://www.instagram.com/linchae_?igsh=MTA0MGdrZm83ZnFzYg=="
       }
     },
     {
@@ -36,11 +36,11 @@ const Band = () => {
       name: "Lee So-yeong",
       role: "Daegeum",
       position: "MUSICIAN",
-      image: "/img/LSY.jpg",
-      imagePosition: "center 20%",
+      image: "/img/new_LSY.png",
+      imagePosition: "center 0%",
       imageScale: "1",
       social: {
-        instagram: "https://instagram.com/"
+        instagram: "https://www.instagram.com/soyeong_ll?igsh=amNuMnVpNThzYTZh"
       }
     },
     {
@@ -52,7 +52,7 @@ const Band = () => {
       imagePosition: "center 10%",
       imageScale: "1",
       social: {
-        instagram: "https://instagram.com/"
+        instagram: "https://www.instagram.com/yookxung?igsh=MWx4eGhjc2JuZXBqeQ=="
       }
     },
     {
@@ -65,7 +65,7 @@ const Band = () => {
       imagePosition: "center 10%",
       imageScale: "1",
       social: {
-        instagram: "https://instagram.com/"
+        instagram: "https://www.instagram.com/b_jaebyeok?igsh=MTg5aXVkZWdreG9wcg=="
       }
     },
     {
@@ -77,7 +77,7 @@ const Band = () => {
       imagePosition: "center 5%",
       imageScale: "1",
       social: {
-        instagram: "https://instagram.com/"
+        instagram: "https://www.instagram.com/_jh_jeoun?igsh=MXRpcXJpZnR5cGwwNA=="
       }
     }
   ];
