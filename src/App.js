@@ -44,8 +44,8 @@ function App() {
       {showModal && <WelcomeModal onClose={handleCloseModal} />}
       <Header />
       <main>
-        {/* <Hero /> */}
-        <About />
+        <Hero />
+        {/* <About /> */}
         <History />
         <Band /> 
         <Music />
