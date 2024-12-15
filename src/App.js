@@ -51,7 +51,7 @@ function App() {
         <Music />
       </main>
       <Footer />
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
     </AppWrapper>
   );
 }
