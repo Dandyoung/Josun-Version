@@ -11,6 +11,7 @@ import Band from './components/sections/Band';
 import Footer from './components/layout/Footer';
 import './styles/globalstyles.css';
 import MusicPlayer from './components/common/MusicPlayer';
+import History from './components/sections/History';
 
 
 
@@ -45,6 +46,7 @@ function App() {
       <main>
         {/* <Hero /> */}
         <About />
+        <History />
         <Band /> 
         <Music />
       </main>
@@ -60,3 +62,4 @@ const AppWrapper = styled.div`
 `;
 
 export default App;
+
