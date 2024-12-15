@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import backgroundMusic from '../../assets/2024 11 29 2024 JUMP UP 조선버전 빛나는 밤, 횃불.mp3';
+import backgroundMusic from '../../assets/audio/2024 11 29 2024 JUMP UP 조선버전 빛나는 밤, 횃불.mp3';
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);

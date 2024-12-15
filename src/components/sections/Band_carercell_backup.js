@@ -12,7 +12,7 @@ const Band = () => {
       id: 1,
       name: "Kim Young-ho",
       role: "Leader & Promoter",
-      image: "/img/KYH.jpg",
+      image: "../../assets/img/KYH.jpg",
       social: {
         instagram: "https://instagram.com/",
         youtube: "https://youtube.com/"
@@ -22,7 +22,7 @@ const Band = () => {
       id: 2,
       name: "Kim Chae-rin",
       role: "Geomungo",
-      image: "/img/KCL.jpg",
+      image: "../../assets/img/KCL.jpg",
       social: {
         instagram: "https://instagram.com/",
         youtube: "https://youtube.com/"
@@ -32,7 +32,7 @@ const Band = () => {
       id: 3,
       name: "Lee So-yeong",
       role: "Daegeum",
-      image: "/img/LSY.jpg",
+      image: "../../assets/img/LSY.jpg",
       social: {
         instagram: "https://instagram.com/",
         youtube: "https://youtube.com/"
@@ -42,7 +42,7 @@ const Band = () => {
       id: 4,
       name: "Hwang Yoo-kyung",
       role: "Haegeum",
-      image: "/img/HYK.png",
+      image: "../../assets/img/HYK.png",
       social: {
         instagram: "https://instagram.com/",
         youtube: "https://youtube.com/"
@@ -53,7 +53,7 @@ const Band = () => {
       name: "Byeon Jae-byeok",
       role: "Synthesizer",
       subRole: "Composer & Arranger",
-      image: "/img/BJB.jpg",
+      image: "../../assets/img/BJB.jpg",
       social: {
         instagram: "https://instagram.com/",
         youtube: "https://youtube.com/"
@@ -63,7 +63,7 @@ const Band = () => {
       id: 6,
       name: "Jeon Jung-hyun",
       role: "Percussion",
-      image: "/img/JJH.jpg",
+      image: "../../assets/img/JJH.jpg",
       social: {
         instagram: "https://instagram.com/",
         youtube: "https://youtube.com/"

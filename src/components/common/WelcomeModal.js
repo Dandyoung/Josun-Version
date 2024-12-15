@@ -3,6 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import modalImage from '../../assets/img/modal.jpg';  // 이미지 import 추가
+
+
 
 const WelcomeModal = ({ onClose }) => {
   const handleDontShowAgain = () => {
@@ -24,7 +27,7 @@ const WelcomeModal = ({ onClose }) => {
           <FontAwesomeIcon icon={faTimes} />
         </TopCloseButton>
         
-        <ModalImage src="/img/modal.jpg" alt="KBS 국악대경연 동상" />
+        <ModalImage src={modalImage} alt="KBS 국악대경연 동상" />  {/* src 수정 */}
         
         <DontShowAgainButton onClick={handleDontShowAgain}>
           다시 보지 않기 <FontAwesomeIcon icon={faTimes} />

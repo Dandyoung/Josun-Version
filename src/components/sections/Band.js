@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import KYHImage from '../../assets/img/band/KYH.jpg';
+import BJBImage from '../../assets/img/band/BJB.jpg';
+import JJHImage from '../../assets/img/band/JJH.jpg';
+import KCLImage from '../../assets/img/band/KCL.jpg';
+import HYKImage from '../../assets/img/band/HYK.png';
+import LSYImage from '../../assets/img/band/LSY.png';
+
+
 
 const Band = () => {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -12,7 +20,7 @@ const Band = () => {
       name: "Kim Young-ho",
       role: "Leader & Promoter",
       position: "EXECUTIVE",
-      image: "/img/KYH.jpg",
+      image:KYHImage,
       imagePosition: "center 10%",
       imageScale: "1",
       social: {
@@ -24,7 +32,7 @@ const Band = () => {
       name: "Kim Chae-rin",
       role: "Geomungo",
       position: "MUSICIAN",
-      image: "/img/KCL.jpg",
+      image: KCLImage,
       imagePosition: "center 30%",
       imageScale: "1",
       social: {
@@ -36,7 +44,7 @@ const Band = () => {
       name: "Lee So-yeong",
       role: "Daegeum",
       position: "MUSICIAN",
-      image: "/img/new_LSY.png",
+      image: LSYImage,
       imagePosition: "center 0%",
       imageScale: "1",
       social: {
@@ -48,7 +56,7 @@ const Band = () => {
       name: "Hwang Yoo-kyung",
       role: "Haegeum",
       position: "MUSICIAN",
-      image: "/img/HYK.png",
+      image: HYKImage,
       imagePosition: "center 10%",
       imageScale: "1",
       social: {
@@ -61,7 +69,7 @@ const Band = () => {
       role: "Synthesizer",
       position: "MUSICIAN",
       subRole: "Composer & Arranger",
-      image: "/img/BJB.jpg",
+      image: BJBImage,
       imagePosition: "center 10%",
       imageScale: "1",
       social: {
@@ -73,7 +81,7 @@ const Band = () => {
       name: "Jeon Jung-hyun",
       role: "Percussion",
       position: "MUSICIAN",
-      image: "/img/JJH.jpg",
+      image: JJHImage,
       imagePosition: "center 5%",
       imageScale: "1",
       social: {
