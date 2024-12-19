@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css, createGlobalStyle,keyframes } from 'styled-components';
-import YeojuCeramic from '/Users/yw/Desktop/josun/Josun-Version/src/fonts/YeojuCeramic_TTF.ttf';
-
+import YeojuCeramic from '../../fonts/YeojuCeramic_TTF.ttf';
+import timelineJson from '../../assets/history/history.json';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'YeojuCeramic';
@@ -200,161 +200,15 @@ const ActionButton = styled.button`
   }
 `;
 
-
 const Timeline = () => {
   const [visibleItems, setVisibleItems] = useState(10);
   const [isExpanded, setIsExpanded] = useState(false);
 
-    // date: 날짜
-    // title: 행사명
-    // description: 상세 설명
-    // tag: 이벤트 유형 태그
-  const timelineData = [
-    {
-      date: "2023.10.21-23",
-      title: "2023 원도심 창작 공간 부산예술축제",
-      description: "국악 공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.10.21", 
-      title: "2023 통도사 개산대재 영축문화축제",
-      description: "국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.10.14",
-      title: "해양 경찰 문화 탐방 행사",
-      description: "국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.09.27",
-      title: "밀락더 마켓X이세현 작가 전시회",
-      description: "국악 공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.09.25",
-      title: "부산창작음악연구회 제 2회 작곡발표회",
-      description: "\"안개숲\" 작품 발표 및 공연",
-      tag: "COMPOSITION"
-    },
-    {
-      date: "2023.09.02",
-      title: "부산 서면 젊음의 거리",
-      description: "연결을 통한 참여 '굿'이로구나 국악 공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.07.16",
-      title: "부산 광안리 밀락 더 마켓X조선버전",
-      description: "도저히 그냥 지나칠 수가 없네 창단연주회",
-      tag: "DEBUT_CONCERT"
-    },
-    {
-      date: "2023.06.09",
-      title: "금정문화재단 2023년 상설공연 멋부림",
-      description: "금정버스킹 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.05.20",
-      title: "2023년 한국 정형외 협회 주체 학회",
-      description: "외국인 컨퍼런스 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.04.07",
-      title: "부산국악협회",
-      description: "2030엑스포 유치 대설단 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2023.04.05",
-      title: "부산국악협회 2030엑스포 유치 대설단",
-      description: "국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.11.22",
-      title: "2022년 원도심 창작공간 예술축제",
-      description: "공감시대 국악X스트릿댄스 공연",
-      tag: "COLLABORATION"
-    },
-    {
-      date: "2022.10.21/23",
-      title: "부산대학교",
-      description: "국제컨퍼런스 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.10.12",
-      title: "금정문화재단",
-      description: "똑똑문화드림 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.10.01/15",
-      title: "부산대역",
-      description: "가족영화콘서트 오프닝 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.09.22",
-      title: "구 해운대역",
-      description: "청춘난장 청년의 날 기념 온라인 국악공연",
-      tag: "ONLINE"
-    },
-    {
-      date: "2022.09.16",
-      title: "대구 중구청",
-      description: "청년이 꿈꾸는 중구 청년의 날 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.08.26-27",
-      title: "부산문화회관",
-      description: "Super Tiger 출연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.07.23",
-      title: "부산문화재단",
-      description: "칠팔버스킹 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.07.23",
-      title: "부산진성 한복문화관 개관기념",
-      description: "래추고 도시재생뉴딜사업 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.07.08",
-      title: "금정고등학교",
-      description: "틈새음악회 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.06.17",
-      title: "금정문화재단 2022년 상설공연 멋부림",
-      description: "금정버스킹 국악공연",
-      tag: "PERFORMANCE"
-    },
-    {
-      date: "2022.03.22",
-      title: "불가사리 프로젝트",
-      description: "피아노와 국악의 아름다운 조우 국악공연",
-      tag: "COLLABORATION"
-    },
-    {
-      date: "2022.03.14",
-      title: "조선버전 창단",
-      description: "조선버전의 시작",
-      tag: "FOUNDATION"
-    }
-  ];
+  // date: 날짜
+  // title: 행사명
+  // description: 상세 설명
+  // tag: 이벤트 유형 태그
+  const {timelineData} = timelineJson
 
   const loadMore = () => {
     setVisibleItems(prev => prev + 10);
