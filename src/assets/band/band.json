@@ -1,0 +1,159 @@
+{
+    "members": [
+      {
+        "id": 1,
+        "name": "Kim Young-ho",
+        "ko_name" : "김용호",
+        "role": "Leader & Promoter",
+        "position": "EXECUTIVE",
+        "major": "대금",
+        "birth": "1996년 출생",
+        "img_path": "/img/band/KYH.jpg",
+        "modal_img_paths": [
+          "/img/band/modal/KYH/modal_kyh_1.jpg",
+          "/img/band/modal/KYH/modal_kyh_2.jpg"
+        ],
+        "imagePosition": "center 10%",
+        "imageScale": "1",
+        "social": {
+          "instagram": "https://www.instagram.com/yong_houuu/?igsh=d2RydTFudDIzem45"
+        },
+        "contents": [
+          "부산대학교 한국음악학과 졸업",
+          "부산대학교 일반대학원 한국음악학과 졸업",
+          "문화예술 융-티 기획팀장"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Kim Cha-rin",
+        "ko_name": "김채린",
+        "role": "Geomungo",
+        "position": "MUSICIAN",
+        "major": "거문고",
+        "birth": "1994년 출생",
+        "img_path": "/img/band/KCL.jpg",
+        "modal_img_paths": [
+          "/img/band/modal/KYH/modal_kcl_1.jpg",
+          "/img/band/modal/KYH/modal_kcl_2.jpg"
+        ],
+        "imagePosition": "center 30%",
+        "imageScale": "1",
+        "social": {
+          "instagram": "https://www.instagram.com/linchae_?igsh=MTA0MGdrZm83ZnFzYg=="
+        },
+        "contents": [
+          "부산대학교 한국음악학과 졸업",
+          "부산대학교 일반대학원 한국음악학과 수료",
+          "부산거문고학회 정단원",
+          "부산국악협회 회원",
+          "와락심포니 단원"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Lee So-yeong",
+        "ko_name": "이소영",
+        "role": "Daegeum",
+        "position": "MUSICIAN",
+        "major": "대금",
+        "birth": "1996년 출생",
+        "img_path": "/img/band/LSY.png",
+        "modal_img_paths": [
+          "/img/band/modal/LSY/modal_lsy_1.jpg",
+          "/img/band/modal/LSY/modal_lsy_2.jpg"
+        ],
+        "imagePosition": "center 0%",
+        "imageScale": "1",
+        "social": {
+          "instagram": "https://www.instagram.com/soyeong_ll?igsh=amNuMnVpNThzYTZh"
+        },
+        "contents": [
+          "부산대학교 한국음악학과 졸업",
+          "부산대학교 일반대학원 한국음악학과 수료",
+          "국가무형유산 대금정악 이수자",
+          "창원국악관현악단원",
+          "부산국악협회 회원",
+          "와락심포니 단원",
+          "대금정악연구회원"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Hwang Yoo-kyung",
+        "ko_name": "황유경",
+        "role": "Haegeum",
+        "position": "MUSICIAN",
+        "major": "해금",
+        "birth": "1999년 출생",
+        "img_path": "/img/band/HYK.png",
+        "modal_img_paths": [
+          "/img/band/modal/HYK/modal_hyk_1.jpg",
+          "/img/band/modal/HYK/modal_hyk_2.jpg"
+        ],
+        "imagePosition": "center 10%",
+        "imageScale": "1",
+        "social": {
+          "instagram": "https://www.instagram.com/yookxung?igsh=MWx4eGhjc2JuZXBqeQ=="
+        },
+        "contents": [
+          "부산대학교 한국음악학과 졸업",
+          "부산대학교 일반대학원 한국음악학과 졸업",
+          "지영희해금산조보존회 정회원",
+          "해금아랑연구단 단원",
+          "부산국악협회 회원"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Byeon Jae-byeok",
+        "ko_name": "변재벽",
+        "role": "Synthesizer",
+        "position": "MUSICIAN",
+        "major": "작곡/피아노",
+        "subRole": "Composer & Arranger",
+        "birth": "1996년 출생",
+        "img_path": "/img/band/BJB.jpg",
+        "modal_img_paths": [
+          "/img/band/modal/BJB/modal_bjb_1.jpg",
+          "/img/band/modal/BJB/modal_bjb_2.jpg"
+        ],
+        "imagePosition": "center 10%",
+        "imageScale": "1",
+        "social": {
+          "instagram": "https://www.instagram.com/b_jaebyeok?igsh=MTg5aXVkZWdreG9wcg=="
+        },
+        "contents": [
+          "부산대학교 한국음악학과 졸업",
+          "부산대학교 일반대학원 한국음악학과 수료",
+          "창원국악관현악단원",
+          "부산국악협회 회원", 
+          "와락심포니 단원"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Jeon Jung-hyun",
+        "ko_name": "전정현",
+        "role": "Percussion",
+        "position": "MUSICIAN",
+        "major": "타악",
+        "birth": "1997년 출생",
+        "img_path": "/img/band/JJH.jpg",
+        "modal_img_paths": [
+          "/img/band/modal/JJH/modal_jjh_1.jpg",
+          "/img/band/modal/JJH/modal_jjh_2.jpg"
+        ],
+        "imagePosition": "center 5%",
+        "imageScale": "1",
+        "social": {
+          "instagram": "https://www.instagram.com/_jh_jeoun?igsh=MXRpcXJpZnR5cGwwNA=="
+        },
+        "contents": [
+          "부산예술대학교 한국음악학과 졸업",
+          "부산대학교 일반대학원 한국음악학과 수료",
+          "2022년 제26회 송만갑 판소리 고수대회 명인부 대상"
+        ]
+      }
+    ]
+  }

@@ -2,93 +2,17 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import KYHImage from '../../assets/img/band/KYH.jpg';
-import BJBImage from '../../assets/img/band/BJB.jpg';
-import JJHImage from '../../assets/img/band/JJH.jpg';
-import KCLImage from '../../assets/img/band/KCL.jpg';
-import HYKImage from '../../assets/img/band/HYK.png';
-import LSYImage from '../../assets/img/band/LSY.png';
-
-
+import bandData from '../../assets/band/band.json';
+import BandModal from '../modals/Band_modal';
 
 const Band = () => {
   const [selectedMember, setSelectedMember] = useState(null);
-    
-  const members = [
-    {
-      id: 1,
-      name: "Kim Young-ho",
-      role: "Leader & Promoter",
-      position: "EXECUTIVE",
-      image:KYHImage,
-      imagePosition: "center 10%",
-      imageScale: "1",
-      social: {
-        instagram: "https://www.instagram.com/yong_houuu/?igsh=d2RydTFudDIzem45"
-      }
-    },
-    {
-      id: 2,
-      name: "Kim Chae-rin",
-      role: "Geomungo",
-      position: "MUSICIAN",
-      image: KCLImage,
-      imagePosition: "center 30%",
-      imageScale: "1",
-      social: {
-        instagram: "https://www.instagram.com/linchae_?igsh=MTA0MGdrZm83ZnFzYg=="
-      }
-    },
-    {
-      id: 3,
-      name: "Lee So-yeong",
-      role: "Daegeum",
-      position: "MUSICIAN",
-      image: LSYImage,
-      imagePosition: "center 0%",
-      imageScale: "1",
-      social: {
-        instagram: "https://www.instagram.com/soyeong_ll?igsh=amNuMnVpNThzYTZh"
-      }
-    },
-    {
-      id: 4,
-      name: "Hwang Yoo-kyung",
-      role: "Haegeum",
-      position: "MUSICIAN",
-      image: HYKImage,
-      imagePosition: "center 10%",
-      imageScale: "1",
-      social: {
-        instagram: "https://www.instagram.com/yookxung?igsh=MWx4eGhjc2JuZXBqeQ=="
-      }
-    },
-    {
-      id: 5,
-      name: "Byeon Jae-byeok",
-      role: "Synthesizer",
-      position: "MUSICIAN",
-      subRole: "Composer & Arranger",
-      image: BJBImage,
-      imagePosition: "center 10%",
-      imageScale: "1",
-      social: {
-        instagram: "https://www.instagram.com/b_jaebyeok?igsh=MTg5aXVkZWdreG9wcg=="
-      }
-    },
-    {
-      id: 6,
-      name: "Jeon Jung-hyun",
-      role: "Percussion",
-      position: "MUSICIAN",
-      image: JJHImage,
-      imagePosition: "center 5%",
-      imageScale: "1",
-      social: {
-        instagram: "https://www.instagram.com/_jh_jeoun?igsh=MXRpcXJpZnR5cGwwNA=="
-      }
-    }
-  ];
+  const { members } = bandData;
+
+  // 이미지 경로를 처리하는 함수
+  const getPublicImagePath = (path) => {
+    return process.env.PUBLIC_URL + path;
+  };
 
   return (
     <BandSection id="band">
@@ -99,10 +23,10 @@ const Band = () => {
 
         <MembersGrid>
           {members.map(member => (
-            <MemberCard key={member.id}>
+            <MemberCard key={member.id} onClick={() => setSelectedMember(member)}>
               <MemberImage>
                 <img 
-                  src={member.image} 
+                  src={getPublicImagePath(member.img_path)} 
                   alt={member.name} 
                   style={{ 
                     objectPosition: member.imagePosition,
@@ -111,14 +35,21 @@ const Band = () => {
                 />
               </MemberImage>
               <TagContainer>
-  <PositionTag onClick={() => setSelectedMember(member)}>
-    <span className="default">{member.position}</span>
-    <span className="hover">Read bio →</span>
-  </PositionTag>
-  <SocialLink href={member.social.instagram} target="_blank">
-    <FontAwesomeIcon icon={faInstagram} />
-  </SocialLink>
-</TagContainer>
+                <PositionTag onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedMember(member);
+                }}>
+                  <span className="default">{member.position}</span>
+                  <span className="hover">Read bio →</span>
+                </PositionTag>
+                <SocialLink 
+                  href={member.social.instagram} 
+                  target="_blank"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <FontAwesomeIcon icon={faInstagram} />
+                </SocialLink>
+              </TagContainer>
               <MemberInfo>
                 <h3>{member.name}</h3>
                 <p>{member.role}</p>
@@ -129,24 +60,17 @@ const Band = () => {
         </MembersGrid>
       </Container>
 
-      {selectedMember && (
-        <Modal onClick={() => setSelectedMember(null)}>
-          <ModalContent onClick={e => e.stopPropagation()}>
-            <CloseButton onClick={() => setSelectedMember(null)}>×</CloseButton>
-            <ModalImage>
-              <img src={selectedMember.image} alt={selectedMember.name} />
-            </ModalImage>``
-            <ModalInfo>
-              <h2>{selectedMember.name}</h2>
-              <p>{selectedMember.role}</p>
-              {selectedMember.subRole && <p>{selectedMember.subRole}</p>}
-            </ModalInfo>
-          </ModalContent>
-        </Modal>
-      )}
+      <BandModal 
+        member={selectedMember ? {
+          ...selectedMember,
+          modal_img_paths: selectedMember.modal_img_paths.map(path => getPublicImagePath(path))
+        } : null}
+        onClose={() => setSelectedMember(null)} 
+      />
     </BandSection>
   );
 };
+
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -211,10 +135,35 @@ const MemberCard = styled.div`
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(25deg);
+    z-index: 1;
+  }
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    
+    &:before {
+      animation: shine 1.9s;
+    }
+  }
+
+  @keyframes shine {
+    100% {
+      left: 150%;
+    }
   }
 `;
 
