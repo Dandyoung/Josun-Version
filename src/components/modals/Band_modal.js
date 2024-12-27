@@ -68,9 +68,9 @@ const Modal = styled.div`
 
 const ModalContent = styled.div`
   background: white;
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
-  max-width: 1200px;
+  max-width: 1000px;
   width: 95%;
   position: relative;
 `;
@@ -222,8 +222,8 @@ const ContentList = styled.ul`
   margin: 0;
   
   li {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.6rem;
+    color: #333;
     margin-bottom: 15px;
     line-height: 1.6;
   }

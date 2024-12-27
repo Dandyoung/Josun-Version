@@ -1,349 +1,308 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import headerLogo from '../../assets/img/logo/header_logo.png';
+import { faPhone, faTimes } from '@fortawesome/free-solid-svg-icons';
+// 상단에 import 변경
+import headerLogo from '../../assets/img/logo/josun_version_logo.svg';
+
+import device from '../../styles/breakpoints';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <>
-      <TopBar>
-        <ContactInfo>
-          <a href="tel:+82-010-4794-1822">
-            <FontAwesomeIcon icon={faPhone} />
-            (+82) 010 4794 1822
-          </a>
-          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faLocationDot} />
-            62-1, Haegwan-ro, Jung-gu, Busan, 48929, Rep. of KOREA
-          </a>
-          <a href="mailto:rhlanf96248@naver.com">
-            <FontAwesomeIcon icon={faEnvelope} />
-            rhlanf96248@naver.com
-          </a>
-        </ContactInfo>
-        <SocialLinks>
-  <div className="social-link-group">
-    <a href="https://www.youtube.com/@%EC%A1%B0%EC%84%A0%EB%B2%84%EC%A0%84" target="_blank" rel="noopener noreferrer">
-      Official YouTube  
-    </a>
-    <a href="https://www.youtube.com/@%EC%A1%B0%EC%84%A0%EB%B2%84%EC%A0%84" target="_blank" rel="noopener noreferrer" className="youtube-icon">
-      <FontAwesomeIcon icon={faYoutube} size="4x" />
-    </a>
-  </div>
-  
-  <div className="social-link-group">
-    <a href="https://www.instagram.com/josun_ver?igsh=a2lidHQzenVueWs0" target="_blank" rel="noopener noreferrer">
-      Official Instagram  
-    </a>
-    <a href="https://www.instagram.com/josun_ver?igsh=a2lidHQzenVueWs0" target="_blank" rel="noopener noreferrer" className="instagram-icon">
-      <FontAwesomeIcon icon={faInstagram} size="4x" />
-    </a>
-  </div>
-</SocialLinks>
-      </TopBar>
-
+      <GlobalStyle />
       <HeaderWrapper>
-        <LeftPart>
+        {/* 데스크톱용 ContactBar */}
+        <DesktopContactBar>
+          <ContactInfo>
+            <a href="tel:+82-010-4794-1822">
+              <FontAwesomeIcon icon={faPhone} /> (+82) 010-4794-1822
+            </a>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://maps.gstatic.com/favicon3.ico" alt="Google Maps" />
+              62-1, Haegwan-ro, Jung-gu, Busan
+            </a>
+            <a href="mailto:rhlanf96248@naver.com">
+              <img src="https://www.naver.com/favicon.ico" alt="Naver" />
+              rhlanf96248@naver.com
+            </a>
+          </ContactInfo>
+          <SocialLinks>
+            <a href="https://www.youtube.com/@%EC%A1%B0%EC%84%A0%EB%B2%84%EC%A0%84" target="_blank" rel="noopener noreferrer">
+              <span className="text">YouTube</span>
+              <img src="https://www.youtube.com/favicon.ico" alt="YouTube" />
+            </a>
+            <a href="https://www.instagram.com/josun_ver?igsh=a2lidHQzenVueWs0" target="_blank" rel="noopener noreferrer">
+              <span className="text">Instagram</span>
+              <img src="https://static.cdninstagram.com/rsrc.php/v3/yR/r/lam-fZmwmvn.png" alt="Instagram" />
+            </a>
+          </SocialLinks>
+        </DesktopContactBar>
+
+        {/* 모바일용 Contact Us 버튼 */}
+        <ContactButton onClick={() => setIsContactOpen(true)}>
+          Contact Us
+        </ContactButton>
+
+        {/* 모바일용 슬라이딩 메뉴 */}
+        <MobileContactBar isOpen={isContactOpen}>
+          <CloseButton onClick={() => setIsContactOpen(false)}>
+            <FontAwesomeIcon icon={faTimes} />
+          </CloseButton>
+          <MobileContactInfo>
+            <a href="tel:+82-010-4794-1822">
+              <FontAwesomeIcon icon={faPhone} /> (+82) 010 4794 1822
+            </a>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://maps.gstatic.com/favicon3.ico" alt="Google Maps" />
+              62-1, Haegwan-ro, Jung-gu, Busan
+            </a>
+            <a href="mailto:rhlanf96248@naver.com">
+              <img src="https://www.naver.com/favicon.ico" alt="Naver" />
+              rhlanf96248@naver.com
+            </a>
+            <div className="social-links">
+              <span>Official</span>
+              <a href="https://www.youtube.com/@%EC%A1%B0%EC%84%A0%EB%B2%84%EC%A0%84" target="_blank" rel="noopener noreferrer">
+                <img src="https://www.youtube.com/favicon.ico" alt="YouTube" className="youtube-icon" />
+              </a>
+              <a href="https://www.instagram.com/josun_ver?igsh=a2lidHQzenVueWs0" target="_blank" rel="noopener noreferrer">
+                <img src="https://static.cdninstagram.com/rsrc.php/v3/yR/r/lam-fZmwmvn.png" alt="Instagram" className="insta-icon" />
+              </a>
+            </div>
+          </MobileContactInfo>
+        </MobileContactBar>
+
+        <MainHeader>
           <Logo href="#wrapper">
             <img src={headerLogo} alt="Josun Version Logo" />
           </Logo>
-        </LeftPart>
-        
-        <RightPart>
-          <MenuIcon onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </MenuIcon>
-        </RightPart>
-
-        {isMenuOpen && <Navigation toggleMenu={toggleMenu} />}
+        </MainHeader>
       </HeaderWrapper>
     </>
   );
 };
 
-// Navigation 컴포넌트 분리
-const Navigation = ({ toggleMenu }) => (
-  <NavigationOverlay>
-    <NavContainer>
-      <NavSection>
-        <NavTitle>조선버전</NavTitle>
-        <NavList>
-          <NavItem>조선버전 소개</NavItem>
-          <NavItem>주요연혁</NavItem>
-          <NavItem>보컬채용</NavItem>
-          <NavItem>오시는 길</NavItem>
-        </NavList>
-      </NavSection>
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow-x: hidden;
+  }
+`;
 
-      <NavSection>
-        <NavTitle>홍보자료</NavTitle>
-        <NavList>
-          <NavItem>조선버전 소식</NavItem>
-          <NavItem>공연영상</NavItem>
-        </NavList>
-      </NavSection>
-
-      <NavSection>
-        <NavTitle>문의하기</NavTitle>
-        <NavList>
-          <NavItem>Contact Us</NavItem>
-        </NavList>
-      </NavSection>
-    </NavContainer>
-    <CloseButton onClick={toggleMenu}>×</CloseButton>
-  </NavigationOverlay>
-);
-
-// Styled Components는 그대로 유지...
-const TopBar = styled.div`
-  background: #f8f9fa;
-  padding: 12px 50px; // 패딩 증가
-  font-size: 15px; // 폰트 사이즈 30% 증가
+const HeaderWrapper = styled.header`
+  width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
+  z-index: 999;
+  background: white;
+  
+  ${device.mobile} {
+    width: 100vw;  // viewport width로 설정
+    overflow-x: hidden;  // 가로 스크롤 방지
+  }
+`;
+
+const DesktopContactBar = styled.div`
   width: 100%;
-  z-index: 1000;
+  background: #f8f9fa;
+  padding: 8px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+  ${device.mobile} {
+    display: none;
+  }
 `;
 
-const ContactInfo = styled.div`
-  display: flex;
-  gap: 26px; // gap 30% 증가
-  align-items: center;
+const ContactButton = styled.button`
+  display: none;
   
+  ${device.mobile} {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    z-index: 1001;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+`;
+
+
+const MobileContactBar = styled.div`
+  display: none;
+  
+  ${device.mobile} {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;  // 100vh에서 auto로 변경
+    max-height: ${props => props.isOpen ? '400px' : '0'};  // 최대 높이 제한
+    background: white;
+    z-index: 1002;
+    padding: ${props => props.isOpen ? '20px' : '0'};  // 열릴 때만 패딩 적용
+    transition: all 0.3s ease;  // 부드러운 애니메이션
+    overflow: hidden;  // 내용이 넘치지 않도록
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    opacity: ${props => props.isOpen ? '1' : '0'};  // 페이드 효과
+  }
+`;
+
+const MobileContactInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;  // 상단 여백 조정
+
   a {
     color: #666;
     text-decoration: none;
+    font-size: 16px;
     display: flex;
     align-items: center;
-    gap: 7px; // gap 30% 증가
-    
-    &:hover {
-      color: #333;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+
+    img {
+      height: 20px;
+      width: 20px;
     }
   }
-`;
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  
-  .social-link-group {
+
+    .social-links {
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin-right: 10px;
+    gap: 15px;
+    margin-top: 10px;
+    padding-bottom: 10px;
     
-    a {
-      text-decoration: none;
+    span {
       color: #666;
+      font-size: 16px;
+    }
+
+    a {
+      border: none;
+      padding: 0;
       display: flex;
       align-items: center;
-      
-      &:hover {
-        color: #333;
-      }
-      
-      &.youtube-icon, &.instagram-icon {
-        font-size: 24px; // 아이콘 크기 직접 지정
-        
-        svg {
-          width: 30px; // SVG 크기 지정
-          height: 30px;
-        }
-      }
-      
-      &.youtube-icon {
-        color: #FF0000;
-      }
-      
-      &.instagram-icon {
-        color: #E4405F;
-      }
     }
-  }
-`;
 
-// HeaderWrapper 수정 (top 위치 조정)
-const HeaderWrapper = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  height: 80px;
-  z-index: 999;
-  padding: 0 50px;
-  background: transparent;
-  overflow: hidden;
-  top: 36px;  // TopBar 높이만큼 아래로
-`;
-
-const LeftPart = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: -35px;  // 왼쪽으로 더 이동
-`;
-
-const Logo = styled.a`
-  text-decoration: none;
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;  // 위치 조정을 위해 추가
-  left: 0;  // 왼쪽으로 정렬
-  
-  h2 {
-    font-family: 'YeojuCeramic', sans-serif !important;
-    font-size: 24px;
-    margin: 0;
-    letter-spacing: 1px;
-  }
-
-  img {
-    height: 200px;
-    width: auto;
-    object-fit: contain;
-  }
-`;
-
-const RightPart = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const MenuIcon = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  
-  span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-primary);
-  }
-`;
-// 1. 먼저 NavList와 NavItem 선언
-const NavList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: 'YeojuCeramic', sans-serif !important;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease-in-out;
-  background: white;
-  min-width: 200px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  z-index: 1000;
-`;
-
-const NavItem = styled.li`
-  margin: 15px 0;
-  color: var(--color-primary);
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 400;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: var(--color-secondary);
-  }
-`;
-
-// 2. 그 다음 나머지 컴포넌트들 선언
-const NavigationOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: white;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 100px;
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 50px;
-`;
-
-const NavSection = styled.div`
-  flex: 1;
-  max-width: 300px;
-  text-align: left;
-  position: relative;
-  padding: 30px;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  
-  &:last-child {
-    border-right: none;
-  }
-  
-  &:hover {
-    ${NavList} {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+    .youtube-icon {
+      height: 28px;  // 유튜브 아이콘 크기
+      width: auto;
     }
-  }
-`;
 
-const NavTitle = styled.h3`
-  font-family: 'YeojuCeramic', sans-serif !important;
-  font-size: 32px;
-  color: var(--color-primary);
-  margin-bottom: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: var(--color-secondary);
+    .insta-icon {
+      height: 24px;  // 인스타 아이콘 크기
+      width: auto;
+    }
   }
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 15px;
+  right: 15px;
   background: none;
   border: none;
-  font-size: 40px;
-  color: var(--color-primary);
+  font-size: 20px;
+  color: #666;
   cursor: pointer;
-  padding: 10px;
+  z-index: 1003;
+  padding: 5px;
+`;
+const ContactInfo = styled.div`
+  display: flex;
+  gap: 20px;
+  align-items: center;
   
-  &:hover {
-    color: var(--color-secondary);
+  a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    &:hover {
+      color: #333;
+    }
+
+    img {
+      height: 16px;
+      width: 16px;
+      object-fit: contain;
+    }
   }
 `;
 
+const SocialLinks = styled.div`
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    img {
+      height: 16px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .text {
+      color: #666;
+      font-size: 14px;
+    }
+  }
+`;
+const MainHeader = styled.div`
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  ${device.mobile} {
+    padding: 1px;
+    height: 80px;  // 고정된 높이 설정
+  }
+`;
+
+const Logo = styled.a`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  
+  img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+
+    ${device.mobile} {
+      height: 180px;  // 로고 크기 조정
+      margin-left: 0;  // 여백 제거
+    }
+  }
+`;
 
 export default Header;

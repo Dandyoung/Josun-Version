@@ -45,7 +45,7 @@ function App() {
       <Header />
       <main>
         <Hero />
-        {/* <About /> */}
+        <About />
         <History />
         <Band /> 
         <Music />
