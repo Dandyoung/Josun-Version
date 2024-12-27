@@ -129,16 +129,22 @@ const ContactButton = styled.button`
     transform: translateY(-50%);
     right: 15px;
     z-index: 1001;
-    background: #4CAF50;
+    background: #55B7B5;
     color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(85, 183, 181, 0.3);  // 메인 그림자
+    transition: all 0.3s ease;  // 부드러운 효과
+
+    &:active {
+      background: #489998;
+      transform: translateY(-45%);  // 살짝 위로 올라가는 효과
+      box-shadow: 0 6px 15px rgba(85, 183, 181, 0.4);  // 더 강한 그림자
+    }
   }
 `;
-
 
 const MobileContactBar = styled.div`
   display: none;
