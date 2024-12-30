@@ -6,7 +6,7 @@ import Preloader from './components/layout/Preloader';
 import WelcomeModal from './components/common/WelcomeModal';  // 모달 import 확인
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
-import Music from './components/sections/Music';
+import Leaflet from './components/sections/Leaflet';
 import Band from './components/sections/Band';
 import Footer from './components/layout/Footer';
 import './styles/globalstyles.css';
@@ -48,7 +48,7 @@ function App() {
         <About />
         <History />
         <Band /> 
-        <Music />
+        <Leaflet />
       </main>
       <Footer />
       {/* <MusicPlayer /> */}
